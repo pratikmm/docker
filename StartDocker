@@ -1,0 +1,7 @@
+#to run docker container use follwoing command
+
+docker run [containerName] #centos
+
+#you can start container using containet ID. You can get container ID using follwoing command
+
+docker ps -l
