@@ -1,0 +1,22 @@
+#
+# pyhton Dockerfile
+
+
+# Pull base image.
+FROM centos
+
+# Install Python.
+RUN \
+		yum -y install Python27
+
+# Define mountable directories.
+VOLUME ["/dir/python27"]
+
+# Define working directory.
+WORKDIR /dir
+
+# Define default command.
+CMD ["python"]
+
+# Expose ports.
+EXPOSE 80
