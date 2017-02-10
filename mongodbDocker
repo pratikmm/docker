@@ -1,0 +1,22 @@
+#
+# mongodb Dockerfile
+
+
+# Pull base image.
+FROM centos
+
+# Install mongodb.
+RUN \
+		yum -y install mongodb
+
+# Define mountable directories.
+VOLUME ["/dir/mongodb"]
+
+# Define working directory.
+WORKDIR /dir
+
+# Define default command.
+CMD ["mongodb"]
+
+# Expose ports.
+EXPOSE 1521
