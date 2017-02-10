@@ -1,0 +1,30 @@
+#
+# apache tomcat Dockerfile
+
+
+# Pull base image.
+FROM centos
+
+yum -y install tar
+ 
+ 
+# Install Tomcat 
+tar -xvf apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
+rm apache-tomcat*.tar.gz && \
+mv apache-tomcat* ${CATALINA_HOME}
+RUN chmod +x ${CATALINA_HOME}/bin/*sh
+ADD tomcat.sh $CATALINA_HOME/scripts/tomcat.sh
+
+#start Catalina
+RUN chmod +x $CATALINA_HOME/scripts/*.sh
+
+# Define working directory.
+WORKDIR /dir/tomcat
+
+# Expose ports.
+EXPOSE 8080 
+
+EXPOSE 7080 
+
+
+CMD ["tomcat.sh"]
